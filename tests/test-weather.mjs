@@ -75,3 +75,30 @@ test('Weather not found', async t => {
     assert.strictEqual(json.message, 'City not found')
   });
 }); 
+
+test('Weather no city', async t => {
+  const response = await fetch('http://localhost:8080/weather')
+
+  await t.test('should be 404', () => {
+    assert.equal(response.status, 404)
+  });
+
+  const json = await response.json()
+
+  await t.test('should be an object', () => {
+    assert.equal(typeof json, 'object')
+  });
+
+  await t.test('checking object members', () => {
+    const keys = Object.keys(json)
+
+    assert.ok(keys.includes('code'))
+    assert.ok(keys.includes('message'))
+
+    assert.strictEqual(typeof json.code, 'string')
+    assert.strictEqual(typeof json.message, 'string')
+    
+    assert.strictEqual(json.code, 'ResourceNotFound')
+    assert.strictEqual(json.message, '/weather does not exist')
+  });
+}); 

@@ -6,7 +6,9 @@ import City from './city.js';
 const server = restify.createServer()
 const myCache = new NodeCache({ stdTTL: 600, checkperiod: 100 })
 
-myCache.on('del', (key) => myCache.set(key, new City(key)))
+myCache.on('del', (key: string) => myCache.set(key, new City(key)))
+
+server.use(restify.plugins.queryParser())
 
 server.get('/weather/:name', respond);
 
@@ -17,7 +19,7 @@ server.listen(8080, function () {
 server.on('close', () => myCache.close())
 
 function respond(req: restify.Request, res: restify.Response, next: restify.Next) {
-  const cityName = req.params.name
+  const cityName = String(req.params?.name)// eslint-disable-line
 
   if (!City.isValid(cityName)) {
     return next(new errs.NotFoundError('City not found'))

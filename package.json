@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "node --test",
-    "lint": "eslint . --fix",
+    "analysis": "eslint ./src",
     "build": "tsc",
     "run": "node dist/main.js",
     "brun": "npx tsc && node dist/main.js"

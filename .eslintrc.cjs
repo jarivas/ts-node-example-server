@@ -1,6 +1,7 @@
 module.exports = {
     parser: "@typescript-eslint/parser",
     parserOptions: {
+      project: true,
       ecmaVersion: "latest", // Allows the use of modern ECMAScript features
       sourceType: "module", // Allows for the use of imports
     },
