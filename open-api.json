@@ -1,0 +1,86 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Swagger Petstore - OpenAPI 3.0",
+    "version": "1.0.11"
+  },
+  "paths": {
+    "/weather/{cityName}": {
+      "get": {
+        "summary": "Get a city by its name",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "cityName",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The name of the city"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The weather for today and following days",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/City"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Weather": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "temperature": {
+            "type": "integer"
+          },
+          "isCelsius": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "type",
+          "temperature",
+          "isCelsius"
+        ]
+      },
+      "City": {
+        "type": "object",
+        "properties": {
+          "city": {
+            "type": "string"
+          },
+          "today": {
+            "$ref": "#/components/schemas/Weather"
+          },
+          "nextDays": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Weather"
+            }
+          },
+          "averageTemperature": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "city",
+          "today",
+          "nextDays",
+          "averageTemperature"
+        ]
+      }
+    }
+  }
+}
