@@ -16,7 +16,7 @@ It is a demo to show how to create a rest server with node, typescript and resti
 * Open the folder with VSCode
 * Accept the Pop up about **Open folder in container** or Open the Command pallete a look for **Open folder in container** and click on it
 * Wait to the environment to be installed
-* Install recommended plugins so now the code quality tools are integrated on the IDE
+* Install recommended plugins (eslint and typescript) on the container, so now the code quality tools are integrated on the IDE
 
 # How to build
 npm run build

@@ -1,0 +1,6 @@
+{
+    "recommendations": [
+        "microsoft.eslint",
+        "microsoft.typescript",
+    ]
+  }
