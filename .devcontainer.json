@@ -3,6 +3,6 @@
 	"dockerComposeFile": [
 		"docker-compose.yml"
 	],
-	"service": "dev",
+	"service": "backend",
 	"workspaceFolder": "/app"
 }
