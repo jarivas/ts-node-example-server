@@ -16,19 +16,21 @@ enum WeatherTypes {
 
 
 export default class Weather {
+    dateTime: string
     type: string
     temperature: number
     isCelsius: boolean
-
+    
     private static getType(): string {
         const values = Object.values(WeatherTypes)
 
         return values[Math.floor(Math.random() * values.length)]
     }
 
-    constructor() {
+    constructor(dateTime: string, isCelsius = true) {
+        this.dateTime = dateTime
         this.type = Weather.getType()
         this.temperature = Math.floor(Math.random() * 35)
-        this.isCelsius = true
+        this.isCelsius = isCelsius
     }
 }

@@ -4,10 +4,12 @@ import assert from 'node:assert'
 function validateWeather(weather) {
   const keys = Object.keys(weather)
 
+  assert.ok(keys.includes('dateTime'))
   assert.ok(keys.includes('type'))
   assert.ok(keys.includes('temperature'))
   assert.ok(keys.includes('isCelsius'))
 
+  assert.strictEqual(typeof weather.dateTime, 'string')
   assert.strictEqual(typeof weather.type, 'string')
   assert.strictEqual(typeof weather.temperature, 'number')
   assert.strictEqual(typeof weather.isCelsius, 'boolean')

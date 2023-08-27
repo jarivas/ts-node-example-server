@@ -14,16 +14,22 @@ export default class City {
     }
     
     constructor(name: string){
+        const now = new Date
         let avg = 0
+        let weather: Weather
 
         this.city = name
-        this.today = new Weather()
+        this.today = new Weather(now.toISOString())
         this.nextDays = []
 
         avg += this.today.temperature
 
         for(let i = 0; i < City.days; ++i) {
-            const weather = new Weather()
+            const day = new Date()
+            
+            day.setDate(now.getDate() + i + 1)
+
+            weather = new Weather(day.toISOString())
 
             this.nextDays.push(weather)
 
